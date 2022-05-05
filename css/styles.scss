@@ -1,0 +1,230 @@
+@import "./modules/index";
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $scroll_col;
+  @include round(20px);
+}
+
+html {
+  background-color: $main_bg;
+}
+
+body {
+  font-family: $font;
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  text-align: center;
+}
+
+.header {
+  background-image: url("../assets/bg-headline-section.png");
+  position: relative;
+}
+
+.header__animation-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.header,
+.footer-sec {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.header {
+  .navbar,
+  ul {
+    @include flex(row, space-evenly, normal, wrap);
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .footer-sec__details-container--logo {
+    text-decoration: none;
+    color: $white;
+  }
+  > .navbar {
+    > * {
+      padding: 1.75em 1em;
+      z-index: 10;
+    }
+    .navbar__item {
+      font-size: 12px;
+      margin: 0 1em;
+      list-style-type: none;
+      > .navbar__item--anchor {
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.header__headline-container,
+.footer-sec {
+  position: relative;
+  color: $white;
+  @include flex(column, normal, center, wrap);
+  padding: 5em 0;
+  box-sizing: border-box;
+}
+
+.header__headline-container {
+  > .header__headline-container--main-logo {
+    > img {
+      transition: all 0.2s ease;
+    }
+    &:hover {
+      > img {
+        transform: scale3d(-1.1, 1.1, 1);
+      }
+    }
+  }
+}
+
+.main-sec {
+  background-color: $white;
+  padding: 1em 0 5em;
+  h3 {
+    margin-top: 2.5em;
+  }
+  > .main-sec__section--article {
+    @include flex(row, space-between, normal, wrap);
+    margin: 0 auto;
+    min-width: 768px;
+    max-width: 900px;
+    p {
+      flex-basis: 384px;
+      text-align: left;
+    }
+  }
+  > .main-sec__button--read-more {
+    padding: 1em 3em;
+    margin: 2em;
+    transition: all 0.4s;
+    transform-origin: left;
+    &:hover {
+      transform: rotateZ(10deg);
+    }
+  }
+}
+
+.main-sec,
+.footer-sec {
+  h3 {
+    font-weight: 400;
+  }
+}
+
+.footer-sec__button--play,
+.main-sec__button--read-more {
+  background-color: $blue-bg;
+  color: $white;
+  @include round(25px);
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.footer-sec {
+  background-image: url("../assets/bg-meeting-footer.jpeg");
+  text-align: center;
+  > .footer-sec__button--play {
+    @include round(50%);
+    width: 150px;
+    height: 150px;
+    font-size: 80px;
+    transition: all 0.5s;
+    &:hover {
+      color: $blue-bg;
+      background-color: $white;
+      transform: scale(0.9);
+    }
+  }
+}
+
+.footer-sec__details-container {
+  display: flex;
+  flex-wrap: wrap;
+  color: $gray;
+  text-align: left;
+  padding: 1em 2.5em;
+  > * {
+    flex: 1 1 0;
+    padding: 1em 0;
+  }
+  > .footer-sec__details-container--logo {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: $white;
+  }
+  > .footer-sec__address {
+    > .footer-sec__address--address-line {
+      display: block;
+    }
+    .footer-sec__address--website-anchor {
+      text-decoration: none;
+      color: $gray;
+    }
+  }
+  > .footer-sec__paragraph--copy-right {
+    align-self: flex-end;
+  }
+}
+
+%animation-figure {
+  position: absolute;
+  z-index: 1;
+  background-color: $white;
+}
+
+.header__figure--lg-circle,
+.header__figure--circle {
+  @extend %animation-figure;
+  @include round(50%);
+}
+
+.header__figure--lg-circle {
+  width: 3.1%;
+  height: 25px;
+  filter: blur(3px);
+}
+
+.header__figure--circle {
+  width: 1.25%;
+  height: 10px;
+}
+
+.header__figure--line {
+  @extend %animation-figure;
+  width: 100px;
+  filter: blur(0.5px);
+  height: 1.4px;
+  transform-origin: right;
+}
+
+.header__figure--moving-animation {
+  animation: movement 5s cubic-bezier(0.5, 0, 0, 0.5) infinite both;
+}
+
+.header__figure--toggle-animation {
+  animation: toggle 2.5s linear infinite alternate both;
+}
+
+.resp-mode,
+.non-resp-mode {
+  height: 100%;
+}
+
+.resp-mode {
+  display: none;
+}

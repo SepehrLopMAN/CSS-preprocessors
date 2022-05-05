@@ -1,0 +1,11 @@
+@mixin round($val: 0) {
+  border-radius: $val;
+}
+
+@mixin flex($dir: row, $JC: normal, $AI: normal, $wrap_status: nowrap) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $JC;
+  align-items: $AI;
+  flex-wrap: $wrap_status;
+}
